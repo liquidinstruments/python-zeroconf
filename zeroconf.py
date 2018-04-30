@@ -23,7 +23,6 @@ from __future__ import (
     USA
 """
 
-import enum
 import errno
 import logging
 import re
@@ -152,14 +151,12 @@ _HAS_ONLY_A_TO_Z_NUM_HYPHEN = re.compile(r'^[A-Za-z0-9\-]+$')
 _HAS_ASCII_CONTROL_CHARS = re.compile(r'[\x00-\x1f\x7f]')
 
 
-@enum.unique
-class InterfaceChoice(enum.Enum):
+class InterfaceChoice(object):
     Default = 1
     All = 2
 
 
-@enum.unique
-class ServiceStateChange(enum.Enum):
+class ServiceStateChange(object):
     Added = 1
     Removed = 2
 
@@ -780,7 +777,7 @@ class DNSOutgoing(object):
             'additionals=%s' % self.additionals,
         ])
 
-    class State(enum.Enum):
+    class State(object):
         init = 0
         finished = 1
 
